@@ -3,6 +3,16 @@
 import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
 import { Avatar } from "@/components/ui/avatar";
+import {
+  Code,
+  DotSquare,
+  Menu,
+  Paperclip,
+  Phone,
+  Send,
+  Video,
+  Zap,
+} from "lucide-react";
 
 const ChatPreviewSection = () => {
   const messages = [
@@ -64,9 +74,36 @@ const ChatPreviewSection = () => {
         </motion.div>
 
         <div className="max-w-2xl mx-auto">
-          <Card className="border border-border bg-card/50 backdrop-blur-sm p-6">
-            <div className="space-y-4">
-              {messages.map((message, index) => (
+          <Card className="border border-border bg-card/50 backdrop-blur-sm">
+            {/* chat header */}
+            <div className="p-4 border-b border-slate-600 flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <img
+                  src="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg"
+                  alt="Alex"
+                  className="w-10 h-10 rounded-full object-cover"
+                />
+                <div>
+                  <div className="font-medium">Alex</div>
+                  <div className="text-sm text-slate-400">
+                    Full Stack Developer
+                  </div>
+                </div>
+              </div>
+              <div className="flex items-center gap-2">
+                <button className="p-2 hover:bg-slate-800 rounded-full transition-colors">
+                  <Phone className="w-5 h-5 text-slate-400" />
+                </button>
+                <button className="p-2 hover:bg-slate-800 rounded-full transition-colors">
+                  <Video className="w-5 h-5 text-slate-400" />
+                </button>
+                <button className="p-2 hover:bg-slate-800 rounded-full transition-colors">
+                  <Menu className="w-5 h-5 text-slate-400" />
+                </button>
+              </div>
+            </div>
+            <div className="space-y-4 p-3">
+              {messages?.map((message, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 10 }}
@@ -104,6 +141,22 @@ const ChatPreviewSection = () => {
                   </div>
                 </motion.div>
               ))}
+              {/* Chat Input */}
+              <div className="p-2">
+                <div className="flex items-center gap-2">
+                  <button className="p-2 hover:bg-slate-800 rounded-full transition-colors">
+                    <Paperclip className="w-5 h-5 text-slate-400" />
+                  </button>
+                  <input
+                    type="text"
+                    placeholder="Type a message..."
+                    className="flex-1 bg-slate-900 rounded-full px-4 py-4 text-white focus:outline-none"
+                  />
+                  <button className="p-2 bg-blue-600 rounded-full hover:bg-blue-700 transition-colors">
+                    <Send className="w-5 h-5 text-white" />
+                  </button>
+                </div>
+              </div>
             </div>
           </Card>
         </div>
